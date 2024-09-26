@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout page</title>
+</head>
+
+<body>
+    <form action="/pay" method="POST" onsubmit="handleSubmit">
+        <input type="text" name="firstname" placeholder="First Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="phone" placeholder="Phone" required />
+        <input type="text" name="productinfo" value="Product Name" required />
+        <input type="text" name="amount" placeholder="Amount" required />
+        <button type="submit">Checkout</button>
+    </form>
+    <script>
+        const handleSubmit = async (event) => {
+            event.preventDefault();
+            let formData = new FormData(event.target);
+
+            const response = await fetch("http://localhost:5000/checkout", {
+                method: "POST",
+                body: formData,
+
+            })
+        }
+    </script>
+</body>
+
+</html>
